@@ -1,3 +1,17 @@
+window.onload = () => {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                loggedIn.style.display = 'block';
+                loggedOut.style.display = 'none';
+            } else {
+                loggedIn.style.display = 'none';
+                loggedOut.style.display = 'block';
+            }
+            console.log('User > ' + JSON.stringify(user));
+        });
+
+    }
+    //Register
 function registerWithFirebase() {
     const emailValue = email.value;
     const passwordValue = password.value; //traer los datos del document 
