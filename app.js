@@ -21,7 +21,7 @@ window.onload = () => {
             })
 
         firebase.database().ref('gifs')
-            .limitToLast(3)
+            .limitToLast(1)
             .on('child_added', (newGif) => {
                 gifContainer.innerHTML += `
                 <p>${newGif.val().creatorName}</p>
@@ -89,7 +89,7 @@ function facebookLoginWithFirebase() {
             console.log('Error de firebase > Mensaje > ' + error.message);
         })
 }
-
+//Enviar gif
 function sendGif() {
     const gifValue = gifArea.value;
 
@@ -101,5 +101,22 @@ function sendGif() {
         creatorName: currentUser.displayName,
         creater: currentUser.uid
     });
+}
 
+//Opcion para enviar foto
+function sendPhotoToStorage() {
+    const photoFile = photoFileSelector.files[0];
+    const fileName = photoFile.name;
+    const metadata = {
+        contentType: photoFile.type
+    };
+
+    const task = firebase.storage().ref('images')
+        .child(fileName)
+        .put(photoFile, metadata);
+
+    task.then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            console.log('URL del archivo > ' + url);
+        });
 }
