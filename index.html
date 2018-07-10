@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <!--Login-->
+        <div id="loggedIn">
+            <p id="username"></p>
+            <input type="button" id="logout" value="LOGOUT">
+        </div>
+        <!--Autentifiación-->
+        <div id="loggedOut">
+            <input id="email" type="email">
+            <input type="password" id="password">
+            <input type="button" onclick="registerWithFirebase()" id="registerButton" value="REGISTER">
+            <input type="button" id="loginButton" value="LOGIN">
+        </div>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyATSuvkMxdf7Y94DLYfQTSX7wRPjFg4NI4",
+            authDomain: "gitchatlaboratoria-1313.firebaseapp.com",
+            databaseURL: "https://gitchatlaboratoria-1313.firebaseio.com",
+            projectId: "gitchatlaboratoria-1313",
+            storageBucket: "gitchatlaboratoria-1313.appspot.com",
+            messagingSenderId: "494405944064"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>
