@@ -3,6 +3,7 @@ window.onload = () => {
             if (user) {
                 loggedIn.style.display = 'block';
                 loggedOut.style.display = 'none';
+                username.innerText = user.displayName;
             } else {
                 loggedIn.style.display = 'none';
                 loggedOut.style.display = 'block';
@@ -39,4 +40,34 @@ function loginWithFirebase() {
             console.log('Error en firebase > Código > ' + error.code); //nos muestra el tipo de error que produce
             console.log('Error de firebase > Mensaje > ' + error.message);
         });
+}
+
+//Logout
+function logoutWithFirebase() {
+    firebase.auth().signOut()
+        .then(() => {
+            console.log('Usuario finalizó su sesión')
+        })
+        .catch((error) => {
+            console.log('Error en firebase > Código > ' + error.code); //nos muestra el tipo de error que produce
+            console.log('Error de firebase > Mensaje > ' + error.message);
+        });
+}
+
+//Login Facebook
+function facebookLoginWithFirebase() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+
+    provider.setCustomParameters({
+        'display': 'popup'
+    });
+
+    firebase.auth().signInWithPopup(provider)
+        .then(() => {
+            console.log("Login con facebook exitoso")
+        })
+        .catch((error) => {
+            console.log('Error en firebase > Código > ' + error.code); //nos muestra el tipo de error que produce
+            console.log('Error de firebase > Mensaje > ' + error.message);
+        })
 }

@@ -14,7 +14,7 @@
         <!--Login-->
         <div id="loggedIn">
             <p id="username"></p>
-            <input type="button" id="logout" value="LOGOUT">
+            <input type="button" id="logout" onclick="logoutWithFirebase()" value="LOGOUT">
         </div>
         <!--Autentifiación-->
         <div id="loggedOut">
@@ -22,6 +22,7 @@
             <input type="password" id="password">
             <input type="button" onclick="registerWithFirebase()" id="registerButton" value="REGISTER">
             <input type="button" id="loginButton" onclick="loginWithFirebase()" value="LOGIN">
+            <input type="button" id="facebookButton" value="FACEBOOK LOGIN" onclick="facebookLoginWithFirebase()">
         </div>
     </div>
 
